@@ -22,7 +22,7 @@ var imgString = new Buffer(imgBytes).toString('base64');
 
 
 /**
- * Arguments
+ * Arguments *note the running ports of the server.
  */
 
 console.log();
