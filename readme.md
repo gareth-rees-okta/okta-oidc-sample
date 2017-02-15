@@ -1,6 +1,7 @@
 # Overview
 
 Sample Single-Page Web App (SPA) for Okta OpenID Connect (OIDC)
+* Modified for OpenShift Deployment. *
 
 ## Sample Scenarios
 
@@ -27,17 +28,27 @@ You can find the main javascript code and html in `/js/widget-app.js` and html i
 
 ## Prerequisites
 
-1. Install [node.js and npm](https://nodejs.org/en/download/) on your developer machine
-2. Clone this Github repository to a local working directory
-3. Run `npm install` from your local working directory to install all dependencies
+1. Create A Github account.
+2. Clone or fork this Github repository to a local working directory
+3. Create a OpenShift account and deploy the cloned version of this repo.
+4. Update the files documented in #Setup below.
 
 ## Setup
 
-> This document assumes you host this app on `http://localhost:8080/`
-
 1. Grant the app [CORS access](http://developer.okta.com/docs/api/getting_started/enabling_cors.html) in your Okta organization (e.g. `http://localhost:8080/`)
 
-2. Create OpenID Connect Application in the Okta Admin UI
+2. Update `/js/config.js` with your Okta organization URL and the **"Client ID"** you copied from your OIDC Application in step 7
+
+    ```
+    return {
+      orgUrl: 'https://example.oktapreview.com',
+      clientId: 'ANRZhyDh8HBFN5abN6Rg'
+    };
+    ```
+
+3. Create a new application in OpenShift and auto deploy from GitHub
+
+4. Create OpenID Connect Application in the Okta Admin UI using the OpenShift URLs
 
     1. Applications>Add Application
     2. Click the **"Create New App"** button
@@ -52,22 +63,9 @@ You can find the main javascript code and html in `/js/widget-app.js` and html i
     7. Copy the **"Client ID"** for your new application
     8. Navigate to the Groups tab for the new app and assign the everyone group
 
-3. Update `/js/config.js` with your Okta organization URL and the **"Client ID"** you copied from your OIDC Application in step 7
+5. Visit `http://localhost:8080/oidc.html` to launch the "OpenID Connect Sample App"
 
-    ```
-    return {
-      orgUrl: 'https://example.oktapreview.com',
-      clientId: 'ANRZhyDh8HBFN5abN6Rg'
-    };
-    ```
-
-4. Install npm packages with `npm install`
-
-5. Start Web Server with `npm start`
-
-6. Visit `http://localhost:8080/oidc.html` to launch the "OpenID Connect Sample App"
-
-7. Visit `http://localhost:8080/widget.html` to launch the "Okta Sign-In Widget Sample App"
+6. Visit `http://localhost:8080/widget.html` to launch the "Okta Sign-In Widget Sample App"
 
 ## Social Authentication
 
